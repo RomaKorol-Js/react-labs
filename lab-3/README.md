@@ -29,6 +29,18 @@ https://mermaid.live/.
 flowchart TD
   App
 ```
+mermaid
+flowchart TD
+    App["1. Меню кав'ярні"] --> SearchBar["2. SearchBar Пошук + фільтр"]
+    App --> MenuTable["3. MenuTable"]
+    
+    MenuTable --> Cat1["4. MenuCategory: Кава"]
+    MenuTable --> Cat2["4. MenuCategory: Чай"]
+    MenuTable --> Cat3["4. MenuCategory: Десерти"]
+    
+    Cat1 --> Item1["5. MenuItemRow x4"]
+    Cat2 --> Item2["5. MenuItemRow x3"]
+    Cat3 --> Item3["5. MenuItemRow x3"]
 
 ## Стан
 
