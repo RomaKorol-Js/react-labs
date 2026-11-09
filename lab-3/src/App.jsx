@@ -1,5 +1,5 @@
 import { menu } from './data.js'
-import MenuItemRow from '../src/components/MenuItemRow.jsx'
+import MenuCategory from './components/MenuCategory.jsx'
 export default function App() {
   return (
     <main className="app">
@@ -24,16 +24,7 @@ export default function App() {
           </tr>
         </thead>
         {menu.map((category) => (
-          <tbody key={category.id}>
-            <tr className="category">
-              <th colSpan={2} scope="rowgroup">
-                {category.name} ({category.items.length})
-              </th>
-            </tr>
-            {category.items.map((item) => (
-              <MenuItemRow key={item.id} item={item} />
-            ))}
-          </tbody>
+          <MenuCategory key={category.id} category={category} />
         ))}
       </table>
     </main>
