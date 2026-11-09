@@ -1,5 +1,5 @@
 import { menu } from './data.js'
-
+import MenuItemRow from '../src/components/MenuItemRow.jsx'
 export default function App() {
   return (
     <main className="app">
@@ -31,16 +31,7 @@ export default function App() {
               </th>
             </tr>
             {category.items.map((item) => (
-              <tr
-                key={item.id}
-                className={item.available ? 'item' : 'item unavailable'}
-              >
-                <th scope="row">
-                  {item.name}
-                  {!item.available && ' — немає'}
-                </th>
-                <td>{item.price} грн</td>
-              </tr>
+              <MenuItemRow key={item.id} item={item} />
             ))}
           </tbody>
         ))}
