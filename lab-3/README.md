@@ -27,11 +27,6 @@ https://mermaid.live/.
 
 ```mermaid
 flowchart TD
-  App
-```
-
-```mermaid
-flowchart TD
     App["1. Меню кав'ярні"] --> SearchBar["2. SearchBar Пошук + фільтр"]
     App --> MenuTable["3. MenuTable"]
 
