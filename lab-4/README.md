@@ -42,3 +42,15 @@ flowchart TD
 При зміні значень у компонентах змінюється App SearchBar, MenuTable,CafeInfo та всі інші компоненти коли вони є
 
 Після рефакторингу у нас оновлюється лише SearchBar,MenuTable та його компоненти
+
+```mermaid
+flowchart TD
+  App --> CafeInfo
+  App -->|menu| FilterableMenuTable
+  FilterableMenuTable -->|filterText, inStockOnly| MenuTable
+  FilterableMenuTable -->|filterText, inStockOnly| SearchBar
+  MenuTable -->|filterText, inStockOnly|filterMenu
+  filterMenu -.->|filterText, inStockOnly| MenuTable
+  MenuTable --> MenuCategory["MenuCategory × 3"]
+  MenuCategory --> MenuItemRow["MenuItemRow × 4, 3, 3"]
+```
