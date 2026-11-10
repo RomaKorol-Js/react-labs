@@ -32,6 +32,7 @@ https://denysmatsevych.github.io/web-development-2026/react/labs/lab-4/
 flowchart TD
   App -->|filterText, inStockOnly| SearchBar
   App -->|filterText, inStockOnly| MenuTable
+  App --> CafeInfo
   MenuTable -->|filterText, inStockOnly|filterMenu
   filterMenu -.->|filterText, inStockOnly| MenuTable
   MenuTable --> MenuCategory["MenuCategory × 3"]
