@@ -37,3 +37,7 @@ flowchart TD
   MenuTable --> MenuCategory["MenuCategory × 3"]
   MenuCategory --> MenuItemRow["MenuItemRow × 4, 3, 3"]
 ```
+
+--
+При зміні значень у компонентах змінюється App SearchBar, MenuTable,CafeInfo та всі інші компоненти коли вони є
+
