@@ -1,8 +1,17 @@
 import GuestsStepper from './GuestsStepper.jsx'
+import { useState } from 'react'
+import { describeBooking } from '../describeBooking.js'
 
 export default function BookingForm() {
+  const [booking, setBooking] = useState(null)
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    setBooking(Object.fromEntries(formData))
+  }
   return (
-    <form className="booking-form">
+    <form className="booking-form" onSubmit={handleSubmit}>
       <label>
         Ім'я
         <input name="name" autoComplete="name" required />
@@ -33,7 +42,9 @@ export default function BookingForm() {
         <button type="submit">Забронювати</button>
         <button type="reset">Очистити</button>
       </div>
-      <p role="status" className="status"></p>
+      <p role="status" className="status">
+        {booking && describeBooking(booking)}
+      </p>
     </form>
   )
 }
