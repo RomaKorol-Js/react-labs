@@ -1,17 +1,28 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
+import { Controller, useForm, useWatch } from 'react-hook-form'
 import GuestsStepper from './GuestsStepper.jsx'
 import { describeBooking } from '../describeBooking.js'
 
 export default function BookingForm() {
-  const [booking, setBooking] = useState(null)
-  const [comment, setComment] = useState('')
-  const [guests, setGuests] = useState(2)
-  const nameRef = useRef(null)
+  const defaultValues = {
+    name: '',
+    phone: '',
+    date: '',
+    time: '',
+    guests: 2,
+    comment: '',
+  }
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    setBooking(Object.fromEntries(formData))
+  const [booking, setBooking] = useState(null)
+  // const [comment, setComment] = useState('')
+  // const [guests, setGuests] = useState(2)
+  // const nameRef = useRef(null)
+  const { register, control, handleSubmit, reset, setFocus } = useForm({
+    defaultValues,
+  })
+  const comment = useWatch({ control, name: 'comment' })
+  function onValid(data) {
+    setBooking(data)
   }
 
   function handleKeyDown(e) {
@@ -21,23 +32,22 @@ export default function BookingForm() {
   }
 
   function handleReset() {
+    setFocus('name') // до reset(): він прибирає посилання на поля
+    reset()
     setBooking(null)
-    setComment('')
-    setGuests(2)
-    nameRef.current.focus()
   }
 
   return (
     <form
       className="booking-form"
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onValid)}
       onKeyDown={handleKeyDown}
       onReset={handleReset}
     >
       <div className="field">
         <label>
           Ім'я
-          <input ref={nameRef} name="name" autoComplete="name" required />
+          <input {...register('name')} autoComplete="name" required />
         </label>
         <p id="name-error" className="field-error"></p>
       </div>
@@ -70,15 +80,19 @@ export default function BookingForm() {
           <p id="time-error" className="field-error"></p>
         </div>
       </div>
-      <GuestsStepper value={guests} onChange={setGuests} />
+      <Controller
+        name="guests"
+        control={control}
+        render={({ field }) => (
+          <GuestsStepper value={field.value} onChange={field.onChange} />
+        )}
+      />
       <label>
         Коментар
         <textarea
-          name="comment"
+          {...register('comment')}
           maxLength={200}
           aria-describedby="comment-counter"
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
         />
       </label>
       <p id="comment-counter" className="counter">
@@ -86,7 +100,9 @@ export default function BookingForm() {
       </p>
       <div className="actions">
         <button type="submit">Забронювати</button>
-        <button type="reset">Очистити</button>
+        <button type="button" onClick={handleReset}>
+          Очистити
+        </button>
       </div>
       <p role="status" className="status">
         {booking && describeBooking(booking)}
