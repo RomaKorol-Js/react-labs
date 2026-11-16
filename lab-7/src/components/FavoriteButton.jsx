@@ -1,14 +1,8 @@
-import { useEffect, useState } from 'react'
-
+import { useLocalStorage } from '../hooks/useLocalStorage'
 export default function FavoriteButton({ productId, name }) {
   const key = `favorite:${productId}`
-  const [isFavorite, setIsFavorite] = useState(
-    () => localStorage.getItem(key) === 'true',
-  )
-
-  useEffect(() => {
-    localStorage.setItem(key, String(isFavorite))
-  }, [key, isFavorite])
+  console.log(key, name)
+  const [isFavorite, setIsFavorite] = useLocalStorage(key, false)
 
   return (
     <button
