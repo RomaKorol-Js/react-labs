@@ -1,7 +1,6 @@
 import { useLocalStorage } from '../hooks/useLocalStorage'
 export default function FavoriteButton({ productId, name }) {
   const key = `favorite:${productId}`
-  console.log(key, name)
   const [isFavorite, setIsFavorite] = useLocalStorage(key, false)
 
   return (
