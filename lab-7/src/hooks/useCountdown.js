@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react'
 export function useCountdown(totalSeconds) {
   const [isRunning, setIsRunning] = useState(false)
   const [secondsLeft, setSecondsLeft] = useState(totalSeconds)
-  // const isRunning = secondsLeft <= 0
   const start = () => {
     setIsRunning(true)
   }
@@ -22,14 +21,24 @@ export function useCountdown(totalSeconds) {
     setIsRunning(false)
     setSecondsLeft(totalSeconds)
   }
+
   useEffect(() => {
     if (!isRunning) return
-    if (secondsLeft === 0) return secondsLeft
-    setInterval(() => {
-      setSecondsLeft(totalSeconds - 1)
+
+    const secondTimer = setInterval(() => {
+      setSecondsLeft((ts) => {
+        if (ts <= 1) {
+          setIsRunning(false)
+          return 0
+        } else {
+          return ts - 1
+        }
+      })
     }, 1000)
+    return () => {
+      clearInterval(secondTimer)
+    }
   }, [isRunning])
 
   return { secondsLeft, isRunning, start, pause, reset }
-  // throw new Error('Not implemented: useCountdown')
 }

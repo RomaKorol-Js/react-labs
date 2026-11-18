@@ -3,11 +3,10 @@ import TimerView from './TimerView.jsx'
 import { useCountdown } from '../hooks/useCountdown.js'
 
 export default function BrewTimer({ method }) {
-  console.log(useCountdown(method.seconds))
   const { secondsLeft, isRunning, start, pause, reset } = useCountdown(
     method.seconds,
   )
-  console.log(secondsLeft)
+
   const status =
     secondsLeft === 0
       ? 'done'
