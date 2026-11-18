@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ShowMore from './ShowMore'
 
 export default function ReviewList({ reviews }) {
   const [count, setCount] = useState(3)
@@ -8,7 +9,7 @@ export default function ReviewList({ reviews }) {
   return (
     <section className="reviews" aria-labelledby="reviews-title">
       <h2 id="reviews-title">Відгуки ({reviews.length})</h2>
-      <ul className="review-list">
+      {/* <ul className="review-list">
         {visibleReviews.map((review) => (
           <li key={review.id}>
             <p className="review-author">
@@ -20,16 +21,24 @@ export default function ReviewList({ reviews }) {
             <p>{review.text}</p>
           </li>
         ))}
-      </ul>
-      {hiddenCount > 0 && (
-        <button
-          type="button"
-          className="show-more"
-          onClick={() => setCount(count + 3)}
-        >
-          Показати ще {Math.min(3, hiddenCount)}
-        </button>
-      )}
+      </ul> */}
+      <ShowMore items={reviews} step={count}>
+        {(visibleReviews) => (
+          <ul className="review-list">
+            {visibleReviews.map((review) => (
+              <li key={review.id}>
+                <p className="review-author">
+                  {review.author}{' '}
+                  <span aria-label={`Оцінка ${review.rating} з 5`}>
+                    {'★'.repeat(review.rating)}
+                  </span>
+                </p>
+                <p>{review.text}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </ShowMore>
     </section>
   )
 }
