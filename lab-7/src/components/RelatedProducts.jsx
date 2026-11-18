@@ -1,14 +1,11 @@
-import { useState } from 'react'
 import FavoriteButton from './FavoriteButton.jsx'
 import ShowMore from './ShowMore.jsx'
 
 export default function RelatedProducts({ products }) {
-  const [count, setCount] = useState(4)
-
   return (
     <section className="related" aria-labelledby="related-title">
       <h2 id="related-title">Схожі товари</h2>
-      <ShowMore items={products} step={count}>
+      <ShowMore items={products} step={4}>
         {(visibleProducts) => (
           <ul className="related-list" aria-labelledby="related-title">
             {visibleProducts.map((item) => (
