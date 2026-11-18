@@ -41,17 +41,12 @@ export default function Tabs({ children, defaultValue }) {
 Tabs.Tab = function Tab({ children, value }) {
   const { setTab } = useTabs()
   return (
-    <button
-      type="button"
-      onClick={() => setTab(value)}
-      className="tab-list"
-      value={value}
-    >
+    <button type="button" onClick={() => setTab(value)} value={value}>
       {children}
     </button>
   )
 }
-Tabs.List = function List({ value, children }) {
+Tabs.List = function List({ 'aria-label': value, children }) {
   return (
     <div aria-label={value} className="tab-list">
       {children}
