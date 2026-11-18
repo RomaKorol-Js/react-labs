@@ -42,5 +42,3 @@ https://denysmatsevych.github.io/web-development-2026/react/labs/lab-7/
 - `npm run lint`: ESLint
 - `npm run format:check`: перевірка форматування Prettier
 - `npm run build`: production-збірка в `dist/`
-
-

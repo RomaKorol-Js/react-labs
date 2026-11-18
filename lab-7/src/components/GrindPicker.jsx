@@ -2,7 +2,6 @@ import { useLocalStorage } from '../hooks/useLocalStorage.js'
 import { grindOptions } from '../data.js'
 
 export default function GrindPicker() {
-
   const [grind, setGrind] = useLocalStorage('grind', grindOptions[0].value)
 
   return (
