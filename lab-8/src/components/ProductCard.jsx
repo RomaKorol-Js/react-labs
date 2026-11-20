@@ -2,10 +2,15 @@ import { useState } from 'react'
 import Button from './Button.jsx'
 import FavoriteButton from './FavoriteButton.jsx'
 import GrindPicker from './GrindPicker.jsx'
+import { withAnalytics } from '../hoc/withAnalytics.jsx'
+
+const AddToCartButton = withAnalytics(Button, 'add_to_cart')
 
 export default function ProductCard({ product }) {
   const [cartCount, setCartCount] = useState(0)
-
+  const add = () => {
+    setCartCount(cartCount + 1)
+  }
   return (
     <article className="product-card">
       <div className="product-title">
@@ -20,9 +25,12 @@ export default function ProductCard({ product }) {
         {product.price} грн <span>за {product.weight}</span>
       </p>
       <div className="cart">
-        <Button onClick={() => setCartCount(cartCount + 1)}>
+        <AddToCartButton
+          analyticsData={{ productId: product.id }}
+          onClick={add}
+        >
           Додати в кошик
-        </Button>
+        </AddToCartButton>
         <p className="cart-status" role="status">
           {cartCount > 0 ? `У кошику: ${cartCount}` : ''}
         </p>
