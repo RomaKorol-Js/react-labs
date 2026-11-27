@@ -14,7 +14,7 @@
 
 | Структура              | Тек | Теки |
 | ---------------------- | --- | ---- |
-| За типом файлів (§4.3) |     |      |
+| За типом файлів (§4.3) |  4  | src\store\cartStore.js ,src\hooks\useCart.js , src\components\AddToCartButton.jsx, src\components\CartLine.jsx , src\pages\CartPage.jsx, src\components\AppHeader.jsx |
 | Гібридна (§4.7)        |     |      |
 | Пакет (§4.10)          |     |      |
 
