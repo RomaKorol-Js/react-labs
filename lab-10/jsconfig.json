@@ -4,5 +4,26 @@
     "module": "esnext",
     "moduleResolution": "bundler"
   },
-  "include": ["src", "packages"]
+  "include": [
+    "src",
+    "packages",
+    "src/app/main.jsx",
+    "src/shared/feature/cart/store/cartStore.js",
+    "src/shared/feature/cart/components/AddToCartButton.jsx",
+    "src/shared/feature/cart/components/CartLine.jsx",
+    "src/shared/hoc",
+    "src/shared/hooks",
+    "src/shared/utils",
+    "src/shared/data",
+    "src/shared/components/Button.jsx",
+    "src/shared/components/Link.jsx",
+    "src/shared/BeanCard.jsx",
+    "src/route/bean/BrewTimer.jsx",
+    "src/app/beans/ProductCard.jsx",
+    "src/route/bean/Tabs.jsx",
+    "src/route/bean/TimerView.jsx",
+    "src/route/bean/ShowMore.jsx",
+    "src/app/components/AppHeader.jsx",
+    "src/app/components/NotFound.jsx"
+  ]
 }

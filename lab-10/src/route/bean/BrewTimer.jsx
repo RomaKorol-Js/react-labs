@@ -1,4 +1,4 @@
-import { useCountdown } from '../hooks/useCountdown.js'
+import { useCountdown } from '../../shared/hooks/useCountdown.js'
 import TimerView from './TimerView.jsx'
 
 function getStatus(secondsLeft, isRunning, totalSeconds) {
