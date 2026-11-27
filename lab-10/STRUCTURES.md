@@ -15,7 +15,7 @@
 | Структура              | Тек | Теки |
 | ---------------------- | --- | ---- |
 | За типом файлів (§4.3) |  4  | src\store\cartStore.js ,src\hooks\useCart.js , src\components\AddToCartButton.jsx, src\components\CartLine.jsx , src\pages\CartPage.jsx, src\components\AppHeader.jsx |
-| Гібридна (§4.7)        |     |      |
+| Гібридна (§4.7)        |  5  |   src\shared\feature\cart\store\cartStore.js , src\shared\feature\cart\useCart.js, lab-src\shared\feature\cart\components\AddToCartButton.jsx, src\shared\feature\cart\components\CartLine.jsx, src\route\cart\CartPage.jsx, src\app\components\AppHeader.jsx |
 | Пакет (§4.10)          |     |      |
 
 ## Вибір структури
